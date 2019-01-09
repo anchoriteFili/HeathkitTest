@@ -1,6 +1,6 @@
 //
-//  HealthkitUITests.swift
-//  HealthkitUITests
+//  HealthKitTestUITests.swift
+//  HealthKitTestUITests
 //
 //  Created by zetafin on 2019/1/9.
 //  Copyright © 2019 赵宏亚. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class HealthkitUITests: XCTestCase {
+class HealthKitTestUITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
