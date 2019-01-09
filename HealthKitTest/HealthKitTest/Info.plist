@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSHealthShareUsageDescription</key>
-	<string>允许访问健康</string>
+	<string>法拉第设计费里看电视放假了sad会计分录看电视剧了疯狂的撒解放路</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>就发了的框架方可垃圾疯狂拉升发讲道理副科级</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
