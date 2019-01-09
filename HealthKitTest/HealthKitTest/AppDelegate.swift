@@ -65,14 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let s = Date(timeIntervalSinceNow: -(Double(hour * 3600 + minute * 60 + second)))
         let e = Date(timeIntervalSinceNow: -(Double(hour * 3600 + minute * 60 + second)) + 86400)
         
-        let pre = HKQuery.predicateForSamples(withStart: s, end: e, options: [.strictStartDate])
-        
-        let stepCountType = HKQuantityType.quantityType(forIdentifier: .stepCount);
-        
-        //以下两种方法均可以获取到所需时间段的步数
-        //        let sampleQuery = HKSampleQuery(sampleType: stepCountType!, predicate: pre, limit: HKObjectQueryNoLimit, sortDescriptors: [sort, end]) { (query, results, error) in
-        //            print("---------")
-        //        }
         guard let step = HKObjectType.quantityType(forIdentifier: .stepCount) else { return }
         let timeSortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         let predicate = HKQuery.predicateForSamples(withStart: s, end: e)

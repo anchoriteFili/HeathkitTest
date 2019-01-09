@@ -15,6 +15,7 @@
 		D63B377A21E59432008F3A4E /* HealthKitTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B377921E59432008F3A4E /* HealthKitTestTests.swift */; };
 		D63B378521E59433008F3A4E /* HealthKitTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B378421E59433008F3A4E /* HealthKitTestUITests.swift */; };
 		D63B379821E5946D008F3A4E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D63B379721E5946D008F3A4E /* HealthKit.framework */; };
+		D64275CE21E5C3B300A376D6 /* HealthKitTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64275CD21E5C3B300A376D6 /* HealthKitTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		D63B378621E59433008F3A4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D63B379621E5946D008F3A4E /* HealthKitTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthKitTest.entitlements; sourceTree = "<group>"; };
 		D63B379721E5946D008F3A4E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		D64275CD21E5C3B300A376D6 /* HealthKitTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				D63B379621E5946D008F3A4E /* HealthKitTest.entitlements */,
 				D63B376421E59430008F3A4E /* AppDelegate.swift */,
+				D64275CD21E5C3B300A376D6 /* HealthKitTool.swift */,
 				D63B376621E59430008F3A4E /* ViewController.swift */,
 				D63B376821E59430008F3A4E /* Main.storyboard */,
 				D63B376B21E59432008F3A4E /* Assets.xcassets */,
@@ -280,6 +283,7 @@
 			files = (
 				D63B376721E59430008F3A4E /* ViewController.swift in Sources */,
 				D63B376521E59430008F3A4E /* AppDelegate.swift in Sources */,
+				D64275CE21E5C3B300A376D6 /* HealthKitTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
