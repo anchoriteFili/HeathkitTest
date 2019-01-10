@@ -62,8 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let second: Int = components.second!;
         
         //读取某个时间段内的步数
-        let s = Date(timeIntervalSinceNow: -(Double(hour * 3600 + minute * 60 + second)))
-        let e = Date(timeIntervalSinceNow: -(Double(hour * 3600 + minute * 60 + second)) + 86400)
+        let s = getStartTime()
+        let e = getEndTime()
+        
+        
+        print("s ****** \(s) e ******** \(e) ")
         
         guard let step = HKObjectType.quantityType(forIdentifier: .stepCount) else { return }
         let timeSortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
@@ -84,25 +87,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         healthStore?.execute(query)
     }
     
-    //写入步数
-    func saveDataToDevice() {
-        //设置时间段， 将步数存储到设置的时间范围内
-        let tmp = Date();
-        let end = Date(timeInterval: -3000, since: tmp)
-        let start = Date(timeInterval: -5000, since: tmp)
+    /**
+     获取当前时区的时间
+     */
+    func getEndTime() -> Date
+    {
+        //转换成本地时区
+        let date = Date()
+        let zone = NSTimeZone.system
+        let interval = zone.secondsFromGMT(for: date)
+        let nowDate = date.addingTimeInterval(Double(interval))
         
-        let step = HKObjectType.quantityType(forIdentifier: .stepCount)
-        let quant = HKQuantity(unit: HKUnit.count(), doubleValue: Double(1000))
-        //device信息可以自定义，这里模仿 Apple Watch
-        //原本写这个demo的用途是方便完成 某个app的步数规定， 但写完后最终发现， 并无用途，
-        //该app是通过bundleIdentifier 来区分步数来源，只能获取 iphone  或 appleWatch 的步数
-        //也就是职能获取bundleIdentifier = com.apple.***的步数
-        let device = HKDevice.init(name: "Apple Watch", manufacturer: "Apple", model: "Watch", hardwareVersion: "Watch2,3", firmwareVersion: nil, softwareVersion: "3.2.2", localIdentifier: nil, udiDeviceIdentifier: nil)
-        let obj = HKQuantitySample.init(type: step!, quantity: quant, start: start, end: end, device: device, metadata: nil)
-        healthStore?.save(obj, withCompletion: { (success, error) in
-            //存储完成回调
-        })
+        print("nowDate ******* \(nowDate)")
+        
+        
+        return nowDate
     }
+    /**
+     获取开始时间 当天0时0分0秒
+     */
+    func getStartTime() -> Date
+    {
+        let datef = DateFormatter()
+        datef.dateFormat = "yyyy-MM-dd"
+        let stringdate = datef.string(from: getEndTime())
+        print("当天日期:\(stringdate)")
+        let tdate = datef.date(from: stringdate)
+        //获取本地时区的当天0时0分0秒
+        let zone = NSTimeZone.system
+        let interval = zone.secondsFromGMT(for: tdate!)
+        let nowday = tdate!.addingTimeInterval(Double(interval))
+        
+        
+        print("nowday ******* \(nowday)")
+        return nowday
+    }
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
